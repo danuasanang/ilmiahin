@@ -17,21 +17,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
 Route::middleware('guest')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'authenticate']);
-
-
-
     Route::get('/register', [RegisterController::class, 'index'])->name('register');
     Route::post('/register', [RegisterController::class, 'postregister']);
 });
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
-    Route::get('/makalah', [UserController::class, 'makalah'])->name('makalah');
+
+    Route::get('/karya-ilmiah/makalah', [UserController::class, 'makalah'])->name('makalah');
     Route::post('/pdfExport', [UserController::class, 'pdfExport'])->name('pdfExport');
+
+    Route::get('/surat/lamaran-pekerjaan', [UserController::class, 'lamaranPekerjaan'])->name('lamaranPekerjaan');
+    Route::post('/preview-lamaran-pekerjaan', [UserController::class, 'lamaranPekerjaanPost'])->name('lamaranPekerjaanPost');
+
     Route::post('/logout', [LoginController::class, 'logout']);
 });

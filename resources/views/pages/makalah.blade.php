@@ -45,8 +45,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-center">
-                                <button class="btn btn-success mt-2 text-white" type="submit" id="btn-export">Export</button>
+                            <div class="d-flex justify-content-center mt-2">
+                                <button class="btn btn-sm btn-danger btn-icon-split" id="btn-export">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                    <span class="text">Export</span>
+                                </button>
+
                             </div>
                         </div>
                     </div>

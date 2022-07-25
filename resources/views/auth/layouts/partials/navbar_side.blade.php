@@ -1,21 +1,67 @@
-<nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
-    <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-            <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
-            <div class="sidebar-brand-text mx-3"><span>Ilmiah-IN</span></div>
-        </a>
-        <hr class="sidebar-divider my-0">
-        <ul class="navbar-nav text-light" id="accordionSidebar">
-            <li class="nav-item">
-                <a class="nav-link {{ request()->route()->getName() == 'dashboard'? 'active': '' }}" href="{{ url('/dashboard') }}">
-                    <i class="fas fa-window-maximize"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->route()->getName() == 'makalah'? 'active': '' }}" href="{{ url('/makalah') }}">
-                    <i class="fas fa-window-maximize"></i><span>Project</span>
-                </a>
-            </li>
-        </ul><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/dashboard') }}">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-book"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Ilmiah <sup>IN</sup></div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link {{ request()->route()->getName() == 'dashboard'? 'active': '' }}" href="{{ url('/dashboard') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Project
     </div>
-</nav>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link {{ request()->segment(1) == 'karya-ilmiah' ? '' : 'collapsed' }}" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-book-open"></i>
+            <span>Karya Ilmiah</span>
+        </a>
+        <div id="collapseTwo" class="collapse {{ request()->segment(1) == 'karya-ilmiah' ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Template Karya Ilmiah</h6>
+                <a class="collapse-item {{ request()->route()->getName() == 'makalah'? 'active': '' }}" href="{{ route('makalah') }}">Template Makalah</a>
+                <a class="collapse-item" href="#">Template Jurnal</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link {{ request()->segment(1) == 'surat' ? '' : 'collapsed' }}" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-envelope"></i>
+            <span>Surat</span>
+        </a>
+        <div id="collapseUtilities" class="collapse {{ request()->segment(1) == 'surat' ? 'show' : '' }}" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Template Surat</h6>
+                <a class="collapse-item {{ request()->route()->getName() == 'lamaranPekerjaan'? 'active': '' }}" href="{{ route('lamaranPekerjaan') }}">Surat Lamaran Kerja</a>
+                <a class="collapse-item" href="#">Surat Ijin Kerja</a>
+                <a class="collapse-item" href="#">Surat Pengunduran Diri</a>
+                <a class="collapse-item" href="#">Surat Ijin Magang</a>
+            </div>
+        </div>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+</ul>
